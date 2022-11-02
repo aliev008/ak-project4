@@ -1,28 +1,35 @@
 export class Slider {
-  constructor(selector, triggers) {
+  selector: any;
+  slides: any[];
+  triggers: NodeListOf<any>;
+  slideIndex: number;
+  numberOfSlides: number;
+
+  constructor(selector: string, triggers: string) {
     this.selector = document.querySelector(selector);
-    this.slides = this.selector.children;
+    this.slides = Array.from(this.selector.children);
     this.triggers = document.querySelectorAll(triggers);
     this.slideIndex = 1;
     this.numberOfSlides = this.slides.length;
   }
 
-  showSlides(n) {
+  showSlides(n: number): void {
     n > this.numberOfSlides && (this.slideIndex = 1);
     n < 1 && (this.slideIndex = this.numberOfSlides);
 
-    this.slides.forEach((slide) => {
+    this.slides.forEach((slide): void => {
       slide.style.display = "none";
-      slide.classList.add('animated', 'fadeIn');
+      slide.classList.add("animated", "fadeIn");
     });
+
     this.slides[this.slideIndex - 1].style.display = "block";
   }
 
-  plusSlides(n) {
+  plusSlides(n: number): void {
     this.showSlides((this.slideIndex += n));
   }
 
-  render() {
+  render(): void {
     this.triggers.forEach((trigger) => {
       trigger.addEventListener("click", () => {
         this.plusSlides(1);
