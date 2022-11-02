@@ -7,7 +7,9 @@ export class Slider {
 
   constructor(selector: string, triggers: string) {
     this.selector = document.querySelector(selector);
-    this.slides = Array.from(this.selector.children as HTMLCollectionOf<HTMLElement>);
+    this.slides = Array.from(
+      this.selector.children as HTMLCollectionOf<HTMLElement>
+    );
     this.triggers = document.querySelectorAll(triggers);
     this.slideIndex = 1;
     this.numberOfSlides = this.slides.length;
@@ -17,12 +19,25 @@ export class Slider {
     n > this.numberOfSlides && (this.slideIndex = 1);
     n < 1 && (this.slideIndex = this.numberOfSlides);
 
+    const currentSlide: HTMLElement = this.slides[this.slideIndex - 1];
+
     this.slides.forEach((slide): void => {
       slide.style.display = "none";
       slide.classList.add("animated", "fadeIn");
     });
 
-    this.slides[this.slideIndex - 1].style.display = "block";
+    if (currentSlide.classList.contains("modules")) {
+      const popupCard = currentSlide.querySelector<HTMLElement>(".hanson");
+      
+      popupCard.style.display = "none";
+      popupCard.classList.add("animated", "fadeInUp");
+
+      setTimeout(() => {
+        popupCard.style.display = "block";
+      }, 3000);
+    }
+
+    currentSlide.style.display = "block";
   }
 
   plusSlides(n: number): void {
