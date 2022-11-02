@@ -1,7 +1,7 @@
 export class Slider {
-  selector: any;
+  selector: HTMLElement;
   slides: any[];
-  triggers: NodeListOf<any>;
+  triggers: NodeListOf<HTMLElement>;
   slideIndex: number;
   numberOfSlides: number;
 
@@ -17,7 +17,7 @@ export class Slider {
     n > this.numberOfSlides && (this.slideIndex = 1);
     n < 1 && (this.slideIndex = this.numberOfSlides);
 
-    this.slides.forEach((slide): void => {
+    this.slides.forEach((slide: HTMLElement): void => {
       slide.style.display = "none";
       slide.classList.add("animated", "fadeIn");
     });
