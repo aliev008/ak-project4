@@ -10,9 +10,10 @@ export class DifferenceColumn {
     this.itemsCounter = 0;
   }
 
-  hideItems() {
+  handleItems() {
     this.items.forEach((item) => {
       if (item !== this.showButton) item.style.display = "none";
+      item.classList.add('animated', 'fadeIn');
     });
   }
 
@@ -25,7 +26,7 @@ export class DifferenceColumn {
   }
 
   init() {
-    this.hideItems();
+    this.handleItems();
     this.bindTriggers();
   }
 }
