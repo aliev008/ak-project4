@@ -2,6 +2,7 @@ import {
   SliderMainVertical,
   SliderMiniHorizontal,
   VideoPlayer,
+  DifferenceColumn,
 } from "./modules";
 
 window.addEventListener("DOMContentLoaded", (): void => {
@@ -15,7 +16,7 @@ window.addEventListener("DOMContentLoaded", (): void => {
     container: ".showup__content-slider",
     next: ".showup__next",
     prev: ".showup__prev",
-    activeClass: 'card-active',
+    activeClass: "card-active",
     animated: true,
     autoplayOn: true,
   });
@@ -25,7 +26,7 @@ window.addEventListener("DOMContentLoaded", (): void => {
     container: ".modules__content-slider",
     next: ".modules__info-btns .slick-next",
     prev: ".modules__info-btns .slick-prev",
-    activeClass: 'card-active',
+    activeClass: "card-active",
     animated: true,
     autoplayOn: true,
   });
@@ -35,7 +36,7 @@ window.addEventListener("DOMContentLoaded", (): void => {
     container: ".feed__slider",
     next: ".feed__slider .slick-next",
     prev: ".feed__slider .slick-prev",
-    activeClass: 'feed__item-active',
+    activeClass: "feed__item-active",
     animated: false,
     autoplayOn: true,
   });
@@ -43,4 +44,16 @@ window.addEventListener("DOMContentLoaded", (): void => {
 
   const firstPageVideoPlayer = new VideoPlayer(".showup .play", ".overlay");
   firstPageVideoPlayer.init();
+
+  const differenceColumnLeft = new DifferenceColumn({
+    columnSelector: ".officerold",
+    columnItemsSelector: ".officerold .officer__card-item",
+  });
+  differenceColumnLeft.init();
+
+  const differenceColumnRight = new DifferenceColumn({
+    columnSelector: ".officernew",
+    columnItemsSelector: ".officernew .officer__card-item",
+  });
+  differenceColumnRight.init();
 });
