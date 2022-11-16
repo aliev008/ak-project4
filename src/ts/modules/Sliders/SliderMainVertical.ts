@@ -6,8 +6,8 @@ export class SliderMainVertical extends Slider {
     }
 
     showSlides(n: number): void {
-        n > this.numberOfSlides && (this.slideIndex = 1);
-        n < 1 && (this.slideIndex = this.numberOfSlides);
+        if (n > this.numberOfSlides) this.slideIndex = 1;
+        if (n < 1) this.slideIndex = this.numberOfSlides;
     
         const currentSlide: HTMLElement = this.slides[this.slideIndex - 1];
     

@@ -4,7 +4,6 @@ export class SliderMiniHorizontal extends Slider {
   autoplayInit: NodeJS.Timer;
   constructor({ container, next, prev, activeClass, animated, autoplayOn }) {
     super({ container, next, prev, activeClass, animated, autoplayOn });
-    this.autoplayInit = setInterval(() => this.nextSlide(), 5000);
   }
 
   decorizeSlides() {
@@ -55,16 +54,17 @@ export class SliderMiniHorizontal extends Slider {
   bindTriggers() {
     this.next.addEventListener("click", () => this.nextSlide());
     this.prev.addEventListener("click", () => this.prevSlide());
-    this.container.addEventListener("mouseenter", () => {
-      clearInterval(this.autoplayInit);
-    });
-    this.container.addEventListener("mouseleave", () =>
-      this.activeSliderAnimation()
-    );
   }
 
-  activeSliderAnimation() {
-    this.autoplayInit = setInterval(() => this.nextSlide(), 5000);
+  activateSliderAnimation() {
+    let autoplayInit = setInterval(() => this.nextSlide(), 5000);
+    this.container.addEventListener("mouseenter", () => {
+      clearInterval(autoplayInit);
+    });
+
+    this.container.addEventListener("mouseleave", () => {
+      autoplayInit = setInterval(() => this.nextSlide(), 5000);
+    });
   }
 
   init() {
@@ -76,6 +76,7 @@ export class SliderMiniHorizontal extends Slider {
         `;
 
     this.bindTriggers();
+    this.autoplayOn && this.activateSliderAnimation();
     this.decorizeSlides();
   }
 }
