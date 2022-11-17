@@ -1,11 +1,11 @@
-export class DifferenceColumn {
-  columnSelector: HTMLElement;
+export class DifferenceBlock {
+  blockSelector: HTMLElement;
   items: NodeListOf<HTMLElement>;
   showButton: HTMLElement;
   itemsCounter: number;
-  constructor({ columnSelector, columnItemsSelector }) {
-    this.columnSelector = document.querySelector(columnSelector);
-    this.items = document.querySelectorAll<HTMLElement>(columnItemsSelector);
+  constructor({ blockSelector, blockItemsSelector }) {
+    this.blockSelector = document.querySelector(blockSelector);
+    this.items = document.querySelectorAll<HTMLElement>(blockItemsSelector);
     this.showButton = this.items[this.items.length - 1];
     this.itemsCounter = 0;
   }

@@ -2,7 +2,7 @@ import {
   SliderMainVertical,
   SliderMiniHorizontal,
   VideoPlayer,
-  DifferenceColumn,
+  DifferenceBlock,
 } from "./modules";
 
 window.addEventListener("DOMContentLoaded", (): void => {
@@ -45,15 +45,15 @@ window.addEventListener("DOMContentLoaded", (): void => {
   const firstPageVideoPlayer = new VideoPlayer(".showup .play", ".overlay");
   firstPageVideoPlayer.init();
 
-  const differenceColumnLeft = new DifferenceColumn({
-    columnSelector: ".officerold",
-    columnItemsSelector: ".officerold .officer__card-item",
+  const firstDifferenceBlock = new DifferenceBlock({
+    blockSelector: ".officerold",
+    blockItemsSelector: ".officerold .officer__card-item",
   });
-  differenceColumnLeft.init();
+  firstDifferenceBlock.init();
 
-  const differenceColumnRight = new DifferenceColumn({
-    columnSelector: ".officernew",
-    columnItemsSelector: ".officernew .officer__card-item",
+  const secondDifferenceBlock= new DifferenceBlock({
+    blockSelector: ".officernew",
+    blockItemsSelector: ".officernew .officer__card-item",
   });
-  differenceColumnRight.init();
+  secondDifferenceBlock.init();
 });
