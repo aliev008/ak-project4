@@ -3,7 +3,9 @@ import { Slider } from "./Slider";
 export class SliderMiniHorizontal extends Slider {
   autoplayInit: NodeJS.Timer;
   constructor({ container, next, prev, activeClass, animated, autoplayOn }) {
-    super({ container, next, prev, activeClass, animated, autoplayOn });
+    try {
+      super({ container, next, prev, activeClass, animated, autoplayOn });
+    } catch (error) {}
   }
 
   decorizeSlides() {
@@ -68,15 +70,17 @@ export class SliderMiniHorizontal extends Slider {
   }
 
   init() {
-    this.container.style.cssText = `
-            display: flex;
-            flex-wrap: wrap;
-            overflow: hidden;
-            align-items: flex-start; 
-        `;
+    try {
+      this.container.style.cssText = `
+      display: flex;
+      flex-wrap: wrap;
+      overflow: hidden;
+      align-items: flex-start; 
+  `;
 
-    this.bindTriggers();
-    this.autoplayOn && this.activateSliderAnimation();
-    this.decorizeSlides();
+      this.bindTriggers();
+      this.autoplayOn && this.activateSliderAnimation();
+      this.decorizeSlides();
+    } catch (error) {}
   }
 }

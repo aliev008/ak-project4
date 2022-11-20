@@ -7,9 +7,11 @@ export class VideoPlayer {
   player: YT.Player;
 
   constructor(trigger: string, modal: string) {
-    this.triggers = document.querySelectorAll(trigger);
-    this.modal = document.querySelector(modal);
-    this.closeTrigger = this.modal.querySelector<HTMLElement>(".close");
+    try {
+      this.triggers = document.querySelectorAll(trigger);
+      this.modal = document.querySelector(modal);
+      this.closeTrigger = this.modal.querySelector<HTMLElement>(".close");
+    } catch (error) {}
   }
 
   createPlayer(url: string) {
@@ -42,7 +44,9 @@ export class VideoPlayer {
   }
 
   init() {
-    this.bindTriggers();
-    this.bindCloseTrigger();
+    try {
+      this.bindTriggers();
+      this.bindCloseTrigger();
+    } catch (error) {}
   }
 }

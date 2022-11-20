@@ -19,23 +19,25 @@ export class Form {
   };
 
   constructor({ containerSelector }) {
-    this.containerSelector = containerSelector;
-    this.formBlock = document.querySelector(containerSelector);
-    this.form = this.formBlock.querySelector("form");
-    this.formSubmitBtn = this.form.querySelector(".btn");
-    this.formInputs = this.form.querySelectorAll<HTMLElement>("input");
-    this.formName = this.form.parentElement.className
-      .replace("__", " ")
-      .replace(/((?<= )[a-z])|^[a-z]/g, (char) => char.toUpperCase());
-    this.formPostStatus = {
-      loadingMessage: "Loading...",
-      successMessage:
-        "Thank's! Our specialist will reach you as soon as possible!",
-      failMessage: "Something gone wrong :-(",
-      loadingImg: "assets/img/spinner.gif",
-      successImg: "assets/img/ok.png",
-      failImg: "assets/img/fail.png",
-    };
+    try {
+      this.containerSelector = containerSelector;
+      this.formBlock = document.querySelector(containerSelector);
+      this.form = this.formBlock.querySelector("form");
+      this.formSubmitBtn = this.form.querySelector(".btn");
+      this.formInputs = this.form.querySelectorAll<HTMLElement>("input");
+      this.formName = this.form.parentElement.className
+        .replace("__", " ")
+        .replace(/((?<= )[a-z])|^[a-z]/g, (char) => char.toUpperCase());
+      this.formPostStatus = {
+        loadingMessage: "Loading...",
+        successMessage:
+          "Thank's! Our specialist will reach you as soon as possible!",
+        failMessage: "Something gone wrong :-(",
+        loadingImg: "assets/img/spinner.gif",
+        successImg: "assets/img/ok.png",
+        failImg: "assets/img/fail.png",
+      };
+    } catch (error) {}
   }
 
   submitForm() {
@@ -96,7 +98,9 @@ export class Form {
   }
 
   init() {
-    checkEmailInputs(`${this.containerSelector} input[name="email"]`);
-    this.submitForm();
+    try {
+      checkEmailInputs(`${this.containerSelector} input[name="email"]`);
+      this.submitForm();
+    } catch (error) {}
   }
 }
