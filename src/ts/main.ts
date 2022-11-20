@@ -3,7 +3,9 @@ import {
   SliderMiniHorizontal,
   VideoPlayer,
   DifferenceBlock,
+  Form,
 } from "./modules";
+import { createMask } from "./utils";
 
 window.addEventListener("DOMContentLoaded", (): void => {
   const sliderMainVertical = new SliderMainVertical({
@@ -51,9 +53,23 @@ window.addEventListener("DOMContentLoaded", (): void => {
   });
   firstDifferenceBlock.init();
 
-  const secondDifferenceBlock= new DifferenceBlock({
+  const secondDifferenceBlock = new DifferenceBlock({
     blockSelector: ".officernew",
     blockItemsSelector: ".officernew .officer__card-item",
   });
   secondDifferenceBlock.init();
+
+  const joinUsForm = new Form({
+    containerSelector: ".join__evolution",
+  });
+
+  joinUsForm.init();
+
+  const scheduleForm = new Form({
+    containerSelector: ".schedule__form",
+  });
+
+  scheduleForm.init();
+
+  createMask('[name="phone"]', "+1 (___) ___-____");
 });
