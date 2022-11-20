@@ -1,9 +1,9 @@
 import { Slider } from "./Slider";
 
-export class SliderMainVertical extends Slider {
-  constructor({ container, triggers }) {
+export class ModulesSliderModulesPage extends Slider {
+  constructor({ container, nextModuleTriggers, prevModuleTriggers}) {
     try {
-      super({ container, triggers });
+      super({ container, nextModuleTriggers, prevModuleTriggers });
     } catch (error) {}
   }
 
@@ -38,19 +38,16 @@ export class SliderMainVertical extends Slider {
 
   render(): void {
     try {
-      this.triggers.forEach((trigger) => {
+      this.nextModuleTriggers.forEach((trigger) => {
         trigger.addEventListener("click", () => {
           this.plusSlides(1);
         });
+      });
 
-        trigger.parentElement.previousElementSibling.addEventListener(
-          "click",
-          (event) => {
-            event.preventDefault();
-            this.slideIndex = 1;
-            this.showSlides(this.slideIndex);
-          }
-        );
+      this.prevModuleTriggers.forEach((trigger) => {
+        trigger.addEventListener("click", () => {
+          this.plusSlides(-1);
+        });
       });
 
       this.showSlides(this.slideIndex);

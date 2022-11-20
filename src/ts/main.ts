@@ -1,5 +1,6 @@
 import {
-  SliderMainVertical,
+  ModulesSliderMainPage,
+  ModulesSliderModulesPage,
   SliderMiniHorizontal,
   VideoPlayer,
   DifferenceBlock,
@@ -8,11 +9,18 @@ import {
 import { createMask } from "./utils";
 
 window.addEventListener("DOMContentLoaded", (): void => {
-  const sliderMainVertical = new SliderMainVertical({
+  const modulesSliderMainPage = new ModulesSliderMainPage({
     container: ".page",
-    triggers: ".next",
+    nextModuleTriggers: ".next",
   });
-  sliderMainVertical.render();
+  modulesSliderMainPage.render();
+
+  const modulesSliderModulesPage = new ModulesSliderModulesPage({
+    container: ".moduleapp",
+    nextModuleTriggers: ".next",
+    prevModuleTriggers: ".prev",
+  });
+  modulesSliderModulesPage.render();
 
   const showupSlider = new SliderMiniHorizontal({
     container: ".showup__content-slider",
