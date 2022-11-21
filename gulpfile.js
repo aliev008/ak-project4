@@ -9,7 +9,7 @@ const dist = "./dist/";
 
 gulp.task("copy-html", () => {
   return gulp
-    .src("./src/index.html")
+    .src("./src/*.html")
     .pipe(gulp.dest(dist))
     .pipe(browsersync.stream());
 });
@@ -63,7 +63,7 @@ gulp.task("watch", () => {
     notify: true,
   });
 
-  gulp.watch("./src/index.html", gulp.parallel("copy-html"));
+  gulp.watch("./src/*.html", gulp.parallel("copy-html"));
   gulp.watch("./src/assets/**/*.*", gulp.parallel("copy-assets"));
   gulp.watch("./src/ts/**/*.ts", gulp.parallel("build-ts"));
 });
