@@ -1,0 +1,4 @@
+[[reidrects]]
+from = "/modules"
+to = "/modules.html"
+status = 200
