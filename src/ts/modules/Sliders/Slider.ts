@@ -11,7 +11,7 @@ export class Slider {
   autoplayOn: boolean;
   nextModuleTriggers: NodeListOf<HTMLElement>;
   prevModuleTriggers: NodeListOf<HTMLElement>;
-
+  homeBtns: NodeListOf<HTMLElement>;
   constructor({
     container = null,
     nextModuleTriggers = null,
@@ -34,6 +34,7 @@ export class Slider {
       this.animated = animated;
       this.activeClass = activeClass;
       this.autoplayOn = autoplayOn;
+      this.homeBtns = document.querySelectorAll('.sidecontrol > a');
     } catch (error) {}
   }
 }

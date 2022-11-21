@@ -1,7 +1,7 @@
 import { Slider } from "./Slider";
 
-export class ModulesSliderModulesPage extends Slider {
-  constructor({ container, nextModuleTriggers, prevModuleTriggers}) {
+export class ModulesSlider extends Slider {
+  constructor({ container, nextModuleTriggers, prevModuleTriggers = null }) {
     try {
       super({ container, nextModuleTriggers, prevModuleTriggers });
     } catch (error) {}
@@ -36,21 +36,32 @@ export class ModulesSliderModulesPage extends Slider {
     this.showSlides((this.slideIndex += n));
   }
 
-  render(): void {
-    try {
-      this.nextModuleTriggers.forEach((trigger) => {
-        trigger.addEventListener("click", () => {
-          this.plusSlides(1);
-        });
+  bindTriggers() {
+    this.nextModuleTriggers.forEach((trigger) => {
+      trigger.addEventListener("click", () => {
+        this.plusSlides(1);
       });
+    });
 
+    this.prevModuleTriggers &&
       this.prevModuleTriggers.forEach((trigger) => {
         trigger.addEventListener("click", () => {
           this.plusSlides(-1);
         });
       });
 
+    this.homeBtns.forEach((homeBtn) => {
+      homeBtn.addEventListener("click", (event) => {
+        event.preventDefault();
+        this.slideIndex = 1;
+        this.showSlides(this.slideIndex);
+      });
+    });
+  }
+  render(): void {
+    try {
       this.showSlides(this.slideIndex);
+      this.bindTriggers();
     } catch (error) {}
   }
 }
