@@ -6,7 +6,7 @@ export const downloadFile = async (url: string, name: string) => {
         href: tempUrl,
         download: name,
         });
-
+  console.log()
   document.body.appendChild(aTag);
   aTag.click();
   URL.revokeObjectURL(url);

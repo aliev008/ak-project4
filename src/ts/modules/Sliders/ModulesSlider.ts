@@ -48,7 +48,7 @@ export class ModulesSlider extends Slider {
       downloadBtns.forEach((btn, index) => {
         btn.addEventListener("click", () => {
           const pdfName = data.pdf_files[index].name;
-          const pdfUrl = data.pdf_files[index].src;
+          const pdfUrl = `assets/files/${pdfName}.pdf`;
           downloadFile(pdfUrl, pdfName);
         });
       });
