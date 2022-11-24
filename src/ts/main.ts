@@ -54,6 +54,9 @@ window.addEventListener("DOMContentLoaded", (): void => {
   const firstPageVideoPlayer = new VideoPlayer(".showup .play", ".overlay");
   firstPageVideoPlayer.init();
 
+  const modulesPageVideoPlayer = new VideoPlayer(".module__video-item .play", ".overlay");
+  modulesPageVideoPlayer.init(); 
+
   const firstDifferenceBlock = new DifferenceBlock({
     blockSelector: ".officerold",
     blockItemsSelector: ".officerold .officer__card-item",
