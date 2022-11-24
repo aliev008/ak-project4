@@ -1,0 +1,36 @@
+{
+    "pdf_files": [
+        {
+            "src": "assets/files/sample-1.pdf",
+            "name": "sample-1"
+        },
+        {
+            "src": "assets/files/sample-2.pdf",
+            "name": "sample-2"
+        },
+        {
+            "src": "assets/files/sample-3.pdf",
+            "name": "sample-3"
+        },
+        {
+            "src": "assets/files/sample-4.pdf",
+            "name": "sample-4"
+        },
+        {
+            "src": "assets/files/sample-5.pdf",
+            "name": "sample-5"
+        },
+        {
+            "src": "assets/files/sample-6.pdf",
+            "name": "sample-6"
+        },
+        {
+            "src": "assets/files/sample-7.pdf",
+            "name": "sample-7"
+        },
+        {
+            "src": "assets/files/sample-8.pdf",
+            "name": "sample-8"
+        }
+    ]
+}

@@ -1,4 +1,6 @@
 import { Slider } from "./Slider";
+import { getData } from "../../services/requests";
+import { downloadFile } from "../../utils/downloadFile";
 
 export class ModulesSlider extends Slider {
   constructor({ container, nextModuleTriggers, prevModuleTriggers = null }) {
@@ -36,6 +38,22 @@ export class ModulesSlider extends Slider {
     this.showSlides((this.slideIndex += n));
   }
 
+  async downloadPDF(): Promise<void> {
+    const downloadBtns = document.querySelectorAll(
+        ".module__info-book .download"
+      ),
+      data = await getData("assets/db.json");
+
+    downloadBtns &&
+      downloadBtns.forEach((btn, index) => {
+        btn.addEventListener("click", () => {
+          const pdfName = data.pdf_files[index].name;
+          const pdfUrl = data.pdf_files[index].src;
+          downloadFile(pdfUrl, pdfName);
+        });
+      });
+  }
+
   bindTriggers() {
     this.nextModuleTriggers.forEach((trigger) => {
       trigger.addEventListener("click", () => {
@@ -57,6 +75,7 @@ export class ModulesSlider extends Slider {
         this.showSlides(this.slideIndex);
       });
     });
+    this.downloadPDF();
   }
   render(): void {
     try {

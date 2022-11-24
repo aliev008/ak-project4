@@ -4,22 +4,18 @@ import {
   VideoPlayer,
   DifferenceBlock,
   Form,
+  Accordion,
 } from "./modules";
 import { createMask } from "./utils";
 
 window.addEventListener("DOMContentLoaded", (): void => {
+  // Main Page
+
   const modulesSliderMainPage = new ModulesSlider({
     container: ".page",
     nextModuleTriggers: ".next",
   });
   modulesSliderMainPage.render();
-
-  const modulesSliderModulesPage = new ModulesSlider({
-    container: ".moduleapp",
-    nextModuleTriggers: ".next",
-    prevModuleTriggers: ".prev",
-  });
-  modulesSliderModulesPage.render();
 
   const showupSlider = new SliderMiniHorizontal({
     container: ".showup__content-slider",
@@ -54,9 +50,6 @@ window.addEventListener("DOMContentLoaded", (): void => {
   const firstPageVideoPlayer = new VideoPlayer(".showup .play", ".overlay");
   firstPageVideoPlayer.init();
 
-  const modulesPageVideoPlayer = new VideoPlayer(".module__video-item .play", ".overlay");
-  modulesPageVideoPlayer.init(); 
-
   const firstDifferenceBlock = new DifferenceBlock({
     blockSelector: ".officerold",
     blockItemsSelector: ".officerold .officer__card-item",
@@ -81,5 +74,27 @@ window.addEventListener("DOMContentLoaded", (): void => {
 
   scheduleForm.init();
 
+  // Modules Page
+
+  const modulesPageVideoPlayer = new VideoPlayer(
+    ".module__video-item .play",
+    ".overlay"
+  );
+  modulesPageVideoPlayer.init();
+
+  const modulesSliderModulesPage = new ModulesSlider({
+    container: ".moduleapp",
+    nextModuleTriggers: ".next",
+    prevModuleTriggers: ".prev",
+  });
+  modulesSliderModulesPage.render();
+
+  const accordionModulesPage = new Accordion({questions: '.module__info-show', answers: '.msg'});
+  accordionModulesPage.init();
+
+  // Common
+
   createMask('[name="phone"]', "+1 (___) ___-____");
+
+  
 });

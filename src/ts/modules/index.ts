@@ -4,3 +4,4 @@ export { SliderMiniHorizontal} from "./Sliders/SliderMiniHorizontal";
 export { VideoPlayer } from "./videoPlayer";
 export { DifferenceBlock} from "./differenceBlock";
 export { Form } from "./form";
+export { Accordion } from "./accordion";

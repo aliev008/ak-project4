@@ -258,8 +258,10 @@ a:active {
 }
 
 .msg {
-  display: none;
-  margin-top: 20px;
+  max-height: var(--max-height);
+  opacity: 0;
+  overflow: hidden;
+  transition: all 0.5s ease-out;
 }
 
 .status {
@@ -268,6 +270,12 @@ a:active {
   align-items: center;
   flex-direction: column;
   height: 100%;
+}
+
+.active {
+  opacity: 1;
+  overflow: visible;
+  margin-top: 10px;
 }
 
 .showup {
@@ -1657,6 +1665,7 @@ a:active {
   display: flex;
   justify-content: center;
   height: 48px;
+  cursor: pointer;
 }
 .module__info-book .download svg {
   transform: translateY(2px);
